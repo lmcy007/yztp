@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="article" v-for="item in list">
-           <div class="title">
+      <div class="title">
         {{item.title}}
       </div>
       <div class="info" v-show="true">

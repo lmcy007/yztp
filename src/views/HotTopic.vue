@@ -7,12 +7,8 @@
       </div>
       <div class="info"  v-show="!item.show">
         {{item.info}}
-        <div class="detail"><a href="http://mp.weixin.qq.com/s/ZdRnAIqx7r19Knbjc6Cirw">查看新闻</a>
-        </div>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -50,17 +46,14 @@ export default {
       }
     }
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .container{
-
-  }
-  .button_add{
-    text-align: center;
-    line-height: 3em;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
   .article{
     border-bottom: 1px solid #dddddd;
@@ -94,9 +87,6 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
 }
-.title a{
-  text-decoration:none
-}
 .time{
   margin-left: 10px;
   font-size: 10px;
@@ -109,11 +99,5 @@ a {
   line-height: 1.8em;
   color: #aaacb4;
 }
-.detail{
-  text-align:right;
-  font-size:0.1em;
-}
-  .addnews{
 
-  }
 </style>

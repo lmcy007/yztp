@@ -56,23 +56,37 @@ h1 {
 .product-list {
 
 }
+.button0 {
+     background-color: white;
+     font-size: 14px;
+     color: black;
+     border-radius: 4px;
+     width: 30%;
+     height:50%;
+     border: 0.2px solid #0099ff; /* Green */
+ }
 </style>
 
 
 <template>
-    <div class="wrap--scroll" @scroll="handleScroll">
-      <img style='vertical-align:middle'src="../assets/logo-2.jpg"  alt="Readhub">
 
-      <div class="nav">
-        <router-link to="/" style="text-decoration:none">同袍原创</router-link>
-        <router-link to="/TmtNews" style="text-decoration:none">军事新闻</router-link>
-        <router-link to="/DeveloperInfo" style="text-decoration:none">其他热点</router-link>
-      </div>
-            <router-view></router-view>
-      <li v-for="(item, index) in previewList " :key="index">
-        测试测试测试测试测试
-        <product-item-component :prodItem="item" />
-      </li>
+<div class="wrap--scroll">
+    <div class="vindex">
+    <div class="title">
+      <img style='vertical-align:middle'src="../assets/logo-2.jpg"  alt="Readhub">
+           <div class="nav">
+             <router-link to="/" style="text-decoration:none">同袍原创</router-link>
+             <router-link to="/TmtNews" style="text-decoration:none">军事新闻</router-link>
+             <router-link to="/DeveloperInfo" style="text-decoration:none">其他热点</router-link>
+           </div>
+           </div>
+    </div>
+     <ul class="product-list" ref="prodList" :style="{paddingTop: lineTopHeight +'px',paddingBottom: lineBottomHeight +'px'}">
+                <li v-for="(item, index) in previewList " v-if="index<=10" :key="index">
+                    <router-view></router-view>
+                </li>
+            </ul>
+      <div align="center"><button class="button0"> 加载更多 </button></div>
     </div>
 </template>
 
@@ -85,12 +99,9 @@ import { mapState } from 'vuex'
 import * as getProdListData from '../store/types/getProdListData-types'
 
 //组件导入
-import productItemComponent from '../components/productItemComponent'
-
-
 export default {
     name: 'productListComponent',
-    components: { productItemComponent },
+    components: {  },
     data() {
         return {
             /* 无限加载参数 */
@@ -100,7 +111,7 @@ export default {
             lineBottomHeight: 0,
             canLoadmore: true,
             previewList: [],
-            displayCount: 0,
+            displayCount: 100,
             itemHeight: 357,
             itemWidth: 328,
             canScroll: true
@@ -120,7 +131,7 @@ export default {
                 this.resetView();
                 //重置数据
                 this.initData();
-                this.handleScroll();
+                //this.handleScroll();
             });
 
         },
@@ -132,7 +143,7 @@ export default {
         /* 无限加载方法 */
         initData() {
             // init all data
-            this._rowsInWindow = Math.ceil(this.$el.offsetHeight / this.itemHeight);//可视区域内多少行
+            this._rowsInWindow = 1;//Math.ceil(this.$el.offsetHeight / this.itemHeight);//可视区域内多少行
             this._above = this._rowsInWindow * 2;//可视区域上方多少行，一般高度为screen高度的2倍
             this._below = this._rowsInWindow;//可视区域下方多少行
             this._max = this._rowsInWindow * this.itemHeight; // 可视区域最大距离
@@ -211,8 +222,8 @@ export default {
     },
     computed: {
         ...mapState({ //vuex 状态
-            prodListData: state => state.getProdListData.prodListData
-        })
+                   prodListData: state => state.getProdListData.prodListData
+               })
     },
     watch: {
         '$route'(to, from) {

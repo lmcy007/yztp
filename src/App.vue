@@ -204,9 +204,9 @@
 
   .wrap--scroll {
     overflow: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        height: 100%;
   }
 
 
@@ -235,9 +235,7 @@
   /* 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸 */
 
   ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-    background-color: #2F3235;
+
   }
 
 
@@ -256,7 +254,7 @@
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #8A8D94;
+    background-color: #F00000;
   }
 
 
@@ -264,7 +262,6 @@
 
 <template>
   <div id="app">
-
     <product-list-component />
   </div>
 </template>
