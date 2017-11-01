@@ -54,7 +54,7 @@ h1 {
 }
 
 .product-list {
-
+list-style: none;
 }
 .button0 {
      background-color: white;
