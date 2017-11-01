@@ -19,7 +19,7 @@ export default {
 
             return new Promise((resolveA, reject) => {
 
-                let url = '../../../static/data/data.json';
+                let url = '../../../static/data.json';
 
                 Vue.http.get(url).then(function (resolve) {
 

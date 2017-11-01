@@ -70,7 +70,7 @@ h1 {
 
 <template>
 
-<div class="wrap--scroll">
+<div class="wrap--scroll" @click.asyc="monclickbutton">
     <div class="vindex">
     <div class="title">
       <img style='vertical-align:middle'src="../assets/logo-2.jpg"  alt="Readhub">
@@ -82,7 +82,7 @@ h1 {
            </div>
     </div>
      <ul class="product-list" ref="prodList" :style="{paddingTop: lineTopHeight +'px',paddingBottom: lineBottomHeight +'px'}">
-                <li v-for="(item, index) in previewList " v-if="index<=10" :key="index">
+                <li v-for="(item, index) in previewList " :key="index">
                     <router-view></router-view>
                 </li>
             </ul>
@@ -122,15 +122,18 @@ export default {
         this.getProdListData();
     },
     methods: {
+    monclickbutton(){
+            this.getProdListData();
+             },
         getProdListData() {//获取数据
             // 获取导航列表
             this.$store.dispatch(getProdListData.ADD_PRODLISTDATA_ACTION).then(() => {
                 //获取数据
                 this.previewList = this.prodListData;
                 //切换页面重置视窗
-                this.resetView();
+                //this.resetView();
                 //重置数据
-                this.initData();
+                //this.initData();
                 //this.handleScroll();
             });
 
