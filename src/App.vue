@@ -191,11 +191,8 @@
   }
 
   #app {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    margin:0 auto;border:1px solid #fff;width:80%;height:200%;
+
   }
 
 

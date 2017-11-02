@@ -8,7 +8,7 @@ Vue.config.debug = true
 export default new Router({
   routes: [
     {
-      path: '/',
+     path: '/',
       component: HotTopic
     },
     {

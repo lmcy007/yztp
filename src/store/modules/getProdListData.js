@@ -23,7 +23,7 @@ export default {
 
                 Vue.http.get(url).then(function (resolve) {
 
-                    let data = resolve.data;
+                    let data = resolve.body.hottopics.list;
 
                     console.log(resolve);
 
