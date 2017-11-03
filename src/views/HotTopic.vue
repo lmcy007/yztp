@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="article" v-for="item in previewList" v-on:click="toggle(item)">
+    <div class="article" v-for="(item,i) in previewList" v-on:click="toggle(item)">
       <div class="title">
-        {{item.title}}
+        {{i}}{{item.title}}
         <span class="time">{{item.time}}</span>
        </div>
       <div class="info"  v-show="!item.show">
@@ -30,7 +30,9 @@
         name: 'HotTopic',
         data: function () {
             return {
+            lastindex:0,
                 item:'',
+                index:'',
                 previewList: []
             }
         },
@@ -38,6 +40,7 @@
         },
         mounted: function () {
                    this.getHottopics();
+                   let lastindex=index;
                     },
         methods: {
             monclickbutton(){
@@ -57,7 +60,9 @@
         },
         computed: {
             ...mapState({ //vuex 状态
+
                 prodListData: state => state.getProdListData.prodListData
+
             })
         }
     }

@@ -1,98 +1,125 @@
 <template>
   <div class="container">
-    <div class="article" v-for="item in list">
+    <div class="article" v-for="(item,i) in previewList" v-on:click="toggle(item)">
       <div class="title">
-        {{item.title}}
-      </div>
-      <div class="info" v-show="true">
-        {{item.info}}
-        <br>
-          <span class="source">{{item.source}}</span>
+        {{i}}{{item.name}}
+       </div>
+      <div class="info" v-show="!item.show">
+        <div>{{item.article}}</div>
+      <div class="detail"><a href="http://mp.weixin.qq.com/s/ZdRnAIqx7r19Knbjc6Cirw">查看新闻</a>
+        </div>
       </div>
     </div>
-
+    <div align="center"><button class="button0"  @click.asyc="monclickbutton"> 加载更多 </button></div>
   </div>
-
 </template>
 
-<script>
-  import Vue from 'vue'
-  import VueResource from 'vue-resource'
-  Vue.use(VueResource)
+<script  type="text/javascript">
+    import Vue from 'vue'
+    import VueResource from 'vue-resource'
+    Vue.use(VueResource)
+    import { mapState } from 'vuex'
 
-  export default {
-    name: 'TmtNews',
-    data: function () {
-      return {item: '', list: []}
-    },
-    components: {
-    },
-    mounted: function () {
-      this.getTmtnews()
-    },
-    methods: {
-      getTmtnews: function () {
-        var _this = this
-        this.$http.get('../static/data.json')
-          .then(function (res) {
-            _this.list = res.body.tmtnews.list
-          })
-          .catch(function (res) {
-            console.log(res)
-          })
-      }
+    // vuex常量
+    import * as getProdListData from '../store/types/getProdListData-types'
+
+    export default {
+        name: 'HotTopic',
+        data: function () {
+            return {
+            lastindex:0,
+                item:'',
+                index:'',
+                previewList: []
+            }
+        },
+        components: {
+        },
+        mounted: function () {
+                   this.getHottopics();
+                   let lastindex=index;
+                    },
+        methods: {
+            monclickbutton(){
+                this.getHottopics();
+            },
+            getHottopics: function () {
+
+                var _this = this
+                this.$store.dispatch(getProdListData.ADD_AUTHORLISTDATA_ACTION).then(() => {
+                    this.previewList = this.authorListData;
+                });
+            },
+            toggle: function (item) {
+                item.show = !item.show
+            }
+
+        },
+        computed: {
+            ...mapState({ //vuex 状态
+
+                authorListData: state => state.getProdListData.authorListData
+
+            })
+        }
     }
-  }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .container{
-    margin-top: 5px;
-    margin-left: 15px;
-    margin-right: 15px;
+    font-size:0.1em;
+  }
+  .Newimg{
+    float:right;
   }
   .article{
     border-bottom: 1px solid #dddddd;
     padding-bottom: 10px;
     padding-top: 10px;
   }
-  h1, h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-  .title{
+    .title{
     position: relative;
     font-size: 16px;
     line-height: 1.56em;
     color: #545454;
     font-weight: 500;
     cursor: pointer;
+      font-size:14px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
   }
-  .source{
-    font-size: 8px;
+  .title a{
+    text-decoration:none
+  }
+  .time{
+    margin-left: 10px;
+    font-size: 10px;
     color: #aaacb4;
-    line-height: 3.0em;
+  }
+  .button0 {
+    background-color: white;
+    font-size: 14px;
+    color: black;
+    border-radius: 4px;
+    width: 30%;
+    height:50%;
+    border: 0.2px solid #0099ff; /* Green */
+    margin-top:20px;;
   }
 
   .info{
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 8px;
     line-height: 1.8em;
     color: #aaacb4;
+  }
+  .detail{
+    text-align:right;
+    font-size:0.1em;
+  }
+  .addnews{
+
   }
 </style>
