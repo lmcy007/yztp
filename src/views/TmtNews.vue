@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="article" v-for="(item,i) in previewList" v-on:click="toggle(item)">
+    <div id="d1" class="article" v-for="(item,i) in previewList" v-on:click="toggle(item),outlineart(item.show)">
       <div class="title">
         {{i}}{{item.name}}
        </div>
@@ -27,7 +27,6 @@
         name: 'HotTopic',
         data: function () {
             return {
-            lastindex:0,
                 item:'',
                 index:'',
                 previewList: []
@@ -37,7 +36,6 @@
         },
         mounted: function () {
                    this.getHottopics();
-                   let lastindex=index;
                     },
         methods: {
             monclickbutton(){
@@ -51,7 +49,18 @@
                 });
             },
             toggle: function (item) {
-                item.show = !item.show
+                item.show = !item.show;
+                          },
+            outlineart:function(a){
+
+              if(a=='0'){
+
+                document.getElementById("d1").style.outline="thin solid #f00";
+
+              }
+              else{
+                document.getElementById("d1").style.outline="none";
+              }
             }
 
         },
@@ -70,6 +79,7 @@
 <style scoped>
   .container{
     font-size:0.1em;
+
   }
   .Newimg{
     float:right;
@@ -78,6 +88,8 @@
     border-bottom: 1px solid #dddddd;
     padding-bottom: 10px;
     padding-top: 10px;
+    outline: ;
+
   }
     .title{
     position: relative;
