@@ -243,7 +243,7 @@
       {
         "name":"作者0",
         "show":"false",
-        "article":"作者0文章0"
+        "article":[{"title":"作者0文章0"},{"title":"作者0文章1"}]
       },
 
       {

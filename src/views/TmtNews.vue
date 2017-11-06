@@ -1,14 +1,15 @@
 <template>
-  <div class="container">
-    <div id="d1" class="article" v-for="(item,i) in previewList" v-on:click="toggle(item),outlineart(item.show)">
+  <div id="containerID" class="container">
+    <div  class="article" v-for="(item,i) in previewList" v-on:click="toggle(item),outlineart(item.show,i)">
+      <div id='authorID"+i+"'>测试</div>
       <div class="title">
         {{i}}{{item.name}}
        </div>
-      <div class="info" v-show="!item.show">
-        <div>{{item.article}}</div>
-      <div class="detail"><a href="http://mp.weixin.qq.com/s/ZdRnAIqx7r19Knbjc6Cirw">查看新闻</a>
-        </div>
-      </div>
+      <ul>
+      <li class="info" v-for="(m,k) in item.article"  v-show="!item.show">
+        <div>{{m.title}}</div>
+      </li>
+      </ul>
     </div>
     <div align="center"><button class="button0"  @click.asyc="monclickbutton"> 加载更多 </button></div>
   </div>
@@ -51,15 +52,17 @@
             toggle: function (item) {
                 item.show = !item.show;
                           },
-            outlineart:function(a){
+            outlineart:function(a,i){
 
               if(a=='0'){
-
-                document.getElementById("d1").style.outline="thin solid #f00";
-
+              alert(i);
+                document.getElementById('authorID"+i+').style.outline="thin solid #f00";
+                  alert("bn");
+                  //document.getElementById("authorID").style.visibility='visible';
               }
               else{
-                document.getElementById("d1").style.outline="none";
+                document.getElementById('authorID"+i+').style.outline="none";
+               //   document.getElementById("authorID").style.visibility='hidden';
               }
             }
 
@@ -88,7 +91,7 @@
     border-bottom: 1px solid #dddddd;
     padding-bottom: 10px;
     padding-top: 10px;
-    outline: ;
+    outline:none ;
 
   }
     .title{
@@ -123,7 +126,7 @@
 
   .info{
     margin-top: 5px;
-    font-size: 8px;
+    font-size: 14px;
     line-height: 1.8em;
     color: #aaacb4;
   }
