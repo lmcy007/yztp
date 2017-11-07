@@ -88,46 +88,9 @@ export default {
     components: { HotTopic },
     data() {
         return {
-            /* 无限加载参数 */
-            lastScrollTop: null,
-            distance: 44,
-            lineTopHeight: 0,
-            lineBottomHeight: 0,
-            canLoadmore: true,
-            previewList: [],
-            displayCount: 100,
-            itemHeight: 357,
-            itemWidth: 328,
-            canScroll: true
+
         }
     },
-    mounted() {
-        // 获取数据
-        alter("come0");
-        this.getProdListData();
-    },
-    methods: {
-    monclickbutton(){
-            this.getProdListData();
-             },
-        getProdListData() {//获取数据
-            // 获取导航列表
-            this.$store.dispatch(getProdListData.ADD_PRODLISTDATA_ACTION).then(() => {
-                //获取数据
-                this.previewList = this.prodListData;
-                //切换页面重置视窗
-                //this.resetView();
-                //重置数据
-                //this.initData();
-                //this.handleScroll();
-            });
 
-        },
-     },
-    computed: {
-        ...mapState({ //vuex 状态
-                   prodListData: state => state.getProdListData.prodListData
-               })
-    }
 }
 </script>

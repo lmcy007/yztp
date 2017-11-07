@@ -1,7 +1,6 @@
 <template>
   <div id="containerID" class="container">
-    <div  class="article" v-for="(item,i) in previewList" v-on:click="toggle(item),outlineart(item.show,i)">
-      <div id='authorID"+i+"'>测试</div>
+    <div :id="item.authorID" class="article" v-for="(item,i) in previewList" v-on:click="toggle(item),outlineart(item.show,item.authorID)">
       <div class="title">
         {{i}}{{item.name}}
        </div>
@@ -11,8 +10,10 @@
       </li>
       </ul>
     </div>
-    <div align="center"><button class="button0"  @click.asyc="monclickbutton"> 加载更多 </button></div>
+    <div align="center"><button class="button0"  @click="monclickbutton"> 加载更多 </button></div>
+
   </div>
+
 </template>
 
 <script  type="text/javascript">
@@ -25,11 +26,12 @@
     import * as getProdListData from '../store/types/getProdListData-types'
 
     export default {
-        name: 'HotTopic',
+        name: 'TmtNews',
         data: function () {
             return {
                 item:'',
                 index:'',
+                aId:"0",
                 previewList: []
             }
         },
@@ -42,28 +44,33 @@
             monclickbutton(){
                 this.getHottopics();
             },
+
             getHottopics: function () {
 
-                var _this = this
+                var _this = this;
+
                 this.$store.dispatch(getProdListData.ADD_AUTHORLISTDATA_ACTION).then(() => {
                     this.previewList = this.authorListData;
+
                 });
             },
             toggle: function (item) {
                 item.show = !item.show;
+
                           },
             outlineart:function(a,i){
 
-              if(a=='0'){
-              alert(i);
-                document.getElementById('authorID"+i+').style.outline="thin solid #f00";
-                  alert("bn");
+
+                if(a==0){
+                document.getElementById(i).style.outline="thin solid #f00";
+                  //$("#i").attr("class", "articleChange");
+
                   //document.getElementById("authorID").style.visibility='visible';
               }
-              else{
-                document.getElementById('authorID"+i+').style.outline="none";
-               //   document.getElementById("authorID").style.visibility='hidden';
-              }
+             else{
+
+                document.getElementById(i).style.outline="none";
+             }
             }
 
         },

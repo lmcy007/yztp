@@ -241,12 +241,14 @@
   "tmtnews":{
     "list":[
       {
+        "authorID":"0",
         "name":"作者0",
         "show":"false",
         "article":[{"title":"作者0文章0"},{"title":"作者0文章1"}]
       },
 
       {
+        "authorID":"1",
         "name":"作者1",
         "show":"false",
         "article":[{"art":"作者1文章0"},

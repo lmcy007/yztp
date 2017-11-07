@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import * as getProdListData from '../types/getProdListData-types'
+
 //api 地址
 import { ApiUrl } from '../../tools/url'
 
@@ -16,6 +17,7 @@ export default {
         },
         [getProdListData.ADD_AUTHORLISTDATA]: function (state, data) {
             state.authorListData = state.authorListData.concat(data);
+
         }
     },
     actions: {
@@ -28,6 +30,7 @@ export default {
                 Vue.http.get(url).then(function (resolve) {
 
                     let data = resolve.body.hottopics.list;
+
                     console.log(resolve);
                     context.commit(getProdListData.ADD_PRODLISTDATA, data);
                     resolveA();
