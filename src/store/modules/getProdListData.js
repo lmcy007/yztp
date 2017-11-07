@@ -22,7 +22,8 @@ export default {
     },
     actions: {
         [getProdListData.ADD_PRODLISTDATA_ACTION]: function (context) {
-
+            alert(11);
+            console.log(1111111);
             return new Promise((resolveA, reject) => {
 
                 let url = '../../../static/data.json';
@@ -45,7 +46,7 @@ export default {
                 
         },
         [getProdListData.ADD_AUTHORLISTDATA_ACTION]: function (context) {
-
+            console.log(22222);
             return new Promise((resolveA, reject) => {
 
                     let url = '../../../static/data.json';
@@ -53,6 +54,7 @@ export default {
             Vue.http.get(url).then(function (resolve) {
 
                     let data = resolve.body.tmtnews.list;
+
                     console.log(resolve);
                     context.commit(getProdListData.ADD_AUTHORLISTDATA, data);
                     resolveA();

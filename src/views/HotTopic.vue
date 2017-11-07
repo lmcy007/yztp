@@ -40,7 +40,7 @@
         },
         mounted: function () {
                    this.getHottopics();
-                   let lastindex=index;
+                   //let lastindex=index;
                     },
         methods: {
             monclickbutton(){

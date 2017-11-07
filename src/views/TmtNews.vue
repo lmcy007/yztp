@@ -1,6 +1,6 @@
 <template>
   <div id="containerID" class="container">
-    <div :id="item.authorID" class="article" v-for="(item,i) in previewList" v-on:click="toggle(item),outlineart(item.show,item.authorID)">
+    <div v-bind:id="i" class="article" v-for="(item,i) in previewList" v-on:click="toggle(item),outlineart(item.show,i)">
       <div class="title">
         {{i}}{{item.name}}
        </div>
