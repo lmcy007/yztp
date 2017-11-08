@@ -39,12 +39,19 @@
         components: {
         },
         mounted: function () {
-                   this.getHottopics();
+                   this.getHottopicsReset();
                    //let lastindex=index;
                     },
         methods: {
             monclickbutton(){
                 this.getHottopics();
+            },
+            getHottopicsReset: function () {
+
+                var _this = this
+                this.$store.dispatch(getProdListData.ADD_PRODLISTDATA_ACTION_RESET).then(() => {
+                    this.previewList = this.prodListData;
+                });
             },
             getHottopics: function () {
 
@@ -73,10 +80,10 @@
 <style scoped>
   .container{
     font-size:0.1em;
+    margin-top:1em;
+
   }
-  .Newimg{
-    float:right;
-  }
+
   .article{
     border-bottom: 1px solid #dddddd;
     padding-bottom: 10px;

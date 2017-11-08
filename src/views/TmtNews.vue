@@ -38,20 +38,22 @@
         components: {
         },
         mounted: function () {
-                   this.getHottopics();
+                   this.getAuthorsRESET();
                     },
         methods: {
             monclickbutton(){
-                this.getHottopics();
+                this.getAuthors();
             },
-
-            getHottopics: function () {
-
+            getAuthorsRESET:function(){
                 var _this = this;
-
+                this.$store.dispatch(getProdListData.ADD_AUTHORLISTDATA_ACTION_RESET).then(() => {
+                    this.previewList = this.authorListData;
+                });
+            },
+            getAuthors: function () {
+                var _this = this;
                 this.$store.dispatch(getProdListData.ADD_AUTHORLISTDATA_ACTION).then(() => {
                     this.previewList = this.authorListData;
-
                 });
             },
             toggle: function (item) {
@@ -62,13 +64,12 @@
 
 
                 if(a==0){
-                document.getElementById(i).style.outline="thin solid #f00";
-                  //$("#i").attr("class", "articleChange");
-
-                  //document.getElementById("authorID").style.visibility='visible';
+                document.getElementById(i).style.outline="thin solid #dddddd";
+                //    document.getElementById(i).style.borderRadius="10em";
+                //document.getElementById("authorID").style.visibility='visible';
               }
              else{
-
+              //      document.getElementById(i).style.borderRadius="0em";
                 document.getElementById(i).style.outline="none";
              }
             }
@@ -89,7 +90,7 @@
 <style scoped>
   .container{
     font-size:0.1em;
-
+    margin-top:1em;
   }
   .Newimg{
     float:right;
@@ -99,7 +100,7 @@
     padding-bottom: 10px;
     padding-top: 10px;
     outline:none ;
-
+    border-radius: 0em;
   }
     .title{
     position: relative;
