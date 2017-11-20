@@ -21,6 +21,8 @@
     vertical-align:middle;
     font-family: 华文宋体;
     line-height: 2em;
+      display: block;
+
   }
   .nav a{
     font-family:华文宋体;
@@ -56,6 +58,17 @@ h1 {
 .product-list {
 list-style: none;
 }
+.Ltitle{
+    word-break:  keep-all;
+    white-space:nowrap;
+    display:inline-block;
+    vertical-align:middle;
+    font-family: 华文宋体;
+    line-height: 2em;
+}
+    .Ltitle0{
+        text-align:center;
+    }
 
 </style>
 
@@ -63,8 +76,11 @@ list-style: none;
 <template>
     <div class="vindex">
     <div class="title">
-      <img style='vertical-align:middle'src="../assets/logo-2.jpg"  alt="Readhub">
-           <div class="nav">
+      <div class="Ltitle0">
+          <img style='vertical-align: middle;'src="../assets/yuzitongpaologo.png"  alt="Readhub">
+        <div class="Ltitle">与子同袍</div>
+      </div>
+        <div class="nav">
                <router-link to="/" style="text-decoration:none">同袍原创</router-link>
                <router-link to="/TmtNews" style="text-decoration:none">军事新闻</router-link>
                <router-link to="/DeveloperInfo" style="text-decoration:none">其他热点</router-link>
