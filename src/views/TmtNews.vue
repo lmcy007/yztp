@@ -90,7 +90,7 @@
 <style scoped>
   .container{
     font-size:0.1em;
-    margin-top:1em;
+    margin-top:0em;
   }
   .Newimg{
     float:right;
@@ -101,15 +101,16 @@
     padding-top: 10px;
     outline:none ;
     border-radius: 0em;
+    clear: left;
   }
     .title{
     position: relative;
-    font-size: 16px;
+    font-size: 11em;
     line-height: 1.56em;
     color: #545454;
     font-weight: 500;
     cursor: pointer;
-      font-size:14px;
+
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   }
@@ -128,8 +129,9 @@
     border-radius: 4px;
     width: 30%;
     height:50%;
-    border: 0.2px solid #0099ff; /* Green */
-    margin-top:20px;;
+    border: 0px solid #0099ff; /* Green */
+    margin-top:20px;
+    outline:0;
   }
 
   .info{
