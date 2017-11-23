@@ -78,6 +78,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  *{
+    margin:0em 0.5em 0em 0.5em;
+    padding:0;
+  }
   .container{
     font-size:0.1em;
     margin-top:0em;

@@ -1,8 +1,14 @@
 <style scoped lang="less" scoped>
+    *{
+        margin:0;
+        padding:0;
+    }
+
   .vindex{
     font-family:华文宋体;
       font-size:0.9em;
-      line-height: 5em;
+      line-height: 50em;
+      width:100%;
 
   }
   .title{
@@ -73,6 +79,8 @@ list-style: none;
         border-bottom: 4px solid #F2F2F2;
         padding-bottom: 20px;
         padding-top: 10px;
+        padding-left: 0em;
+        padding-right:0em;
     }
     .Lcontext{
         font-size:1em;
@@ -116,7 +124,7 @@ list-style: none;
         </div>
         </div>
         <router-view></router-view>
-    </div>
+    </div id="menu_bg">
 </template>
 
 
