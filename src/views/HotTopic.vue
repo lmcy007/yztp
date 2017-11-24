@@ -1,19 +1,20 @@
 <template>
   <div class="container">
+
     <div class="article" v-for="(item,i) in previewList" v-on:click="toggle(item)">
       <div class="title">
         {{i}}{{item.title}}
         <span class="time">{{item.time}}</span>
        </div>
+
       <div class="info"  v-show="!item.show">
         {{item.info}}
         <div class="detail"><a href="http://mp.weixin.qq.com/s/ZdRnAIqx7r19Knbjc6Cirw">查看新闻</a>
         </div>
       </div>
-
     </div>
 
-    <div align="center"><button class="button0"  @click.asyc="monclickbutton"> 加载更多 </button></div>
+    <div align="center" class="ceshi"><button class="button0"  @click.asyc="monclickbutton"> 加载更多 </button></div>
   </div>
 </template>
 
@@ -78,20 +79,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  *{
-    margin:0em 0.5em 0em 0.5em;
+  *{  margin:0em 0.5em 0em 0.5em;
     padding:0;
   }
   .container{
     font-size:0.1em;
-    margin-top:0em;
-
+    margin-top:1em;
   }
 
   .article{
     border-bottom: 1px solid #dddddd;
-    padding-bottom: 10px;
-    padding-top: 1px;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+
   }
     .title{
     position: relative;
@@ -100,7 +100,7 @@
     font-weight: 500;
     cursor: pointer;
       font-size:11em;
-      clear: left;
+      clear: both;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   }
@@ -121,8 +121,9 @@
     width: 30%;
     height:50%;
     border: 0px solid #0099ff; /* Green */
-    margin-top:20px;
-    outline:0;
+    margin-top:1em;
+    margin-bottom: 1em;
+    outline:none ;
   }
 
   .info{
@@ -135,7 +136,5 @@
     text-align:right;
     font-size:0.1em;
   }
-  .addnews{
 
-  }
 </style>

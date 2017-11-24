@@ -7,7 +7,7 @@
   .vindex{
     font-family:华文宋体;
       font-size:0.9em;
-      line-height: 50em;
+      line-height: 0em;
       width:100%;
 
   }
@@ -36,10 +36,12 @@
     font-family:华文宋体;
       font-size:1.2em;
     text-decoraction:none;
+      color:#000000;
 
   }
   a.router-link-exact-active{
     font-weight: bold;
+      color:#aaaaaa;
 
   }
 .wrap--scroll {
@@ -89,12 +91,9 @@ list-style: none;
     }
 
   .nav-item{
-
       text-align:center;
       vertical-align:middle;
-
     width:50%;
-
       float:left;
  }
   .nav-item1{
@@ -124,7 +123,7 @@ list-style: none;
         </div>
         </div>
         <router-view></router-view>
-    </div id="menu_bg">
+    </div>
 </template>
 
 

@@ -154,7 +154,8 @@
     width: 30%;
     height:50%;
     border: 0px solid #0099ff; /* Green */
-    margin-top:20px;
+    margin-top:1em;
+    margin-bottom: 1em;
     outline:0;
   }
 
